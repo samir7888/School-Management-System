@@ -25,6 +25,7 @@ function App() {
                 allowedRoutes={["admin", "super_admin"]}
               />
             </Persist>
+            
           }
         />
         <Route
