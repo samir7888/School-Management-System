@@ -5,7 +5,7 @@ interface login {
   password: string;
   remember?: boolean;
 }
-import { BASEURL } from "../constant";
+import { BASEURL } from "../utils/constant";
 
 export async function login({ email, password }: login) {
   try {
@@ -21,5 +21,6 @@ export async function login({ email, password }: login) {
     return res.data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 }

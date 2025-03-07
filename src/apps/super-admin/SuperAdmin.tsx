@@ -1,11 +1,9 @@
-
-
-import Logout from '../../components/logout';
+import Logout from "../../components/Logout";
 export const SuperAdmin = () => {
-  return (<>
-    <div>SuperAdmin</div>
-    <Logout/>
-  </>
-  )
-}
-
+  return (
+    <>
+      <div>SuperAdmin</div>
+      <Logout />
+    </>
+  );
+};

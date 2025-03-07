@@ -1,13 +1,13 @@
 export interface IUser {
-  access_token: string;
-  firstName?: string;
-  lastName?: string;
-  role: string;
+  firstName: string;
+  lastName: string;
+  role: UserRole;
+  branchId: string | undefined;
 }
 
 export enum UserRole {
-  Admin = 'admin',
-  SuperAdmin = 'super_admin',
-  Student = 'student',
-  Teacher = 'teacher'
+  Admin = "admin",
+  SuperAdmin = "super_admin",
+  Student = "student",
+  Teacher = "teacher",
 }

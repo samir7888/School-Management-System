@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
-import { BASEURL } from "../constant";
+import { BASEURL } from "../utils/constant";
 const useAxiosAuth = () => {
   const { accessToken, setAccessToken } = useAuth();
 
