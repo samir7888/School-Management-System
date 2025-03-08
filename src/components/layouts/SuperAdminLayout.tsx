@@ -15,7 +15,7 @@ const SuperAdminLayout = () => {
         </aside>
 
         {/* Main Content Section */}
-        <main className="w-full bg-red-100 p-10">
+        <main className="w-full bg-[#F8FAFC] text-[#1E293B] p-10">
           <Outlet />
         </main>
       </div>

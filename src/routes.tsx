@@ -2,8 +2,7 @@ import React, { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthProvider";
 // Auth apps/pages
-import Login from "./components/Login";
-import ForgotPassword from "./components/ForgotPassword";
+import Login from "./apps/Login-Page";
 
 // Layout components
 import AdminLayout from "./components/layouts/AdminLayout";
@@ -30,7 +29,7 @@ import Classes from "./apps/teacher/pages/Class";
 import Overview from "./apps/super-admin/pages/Overview";
 import ManageAdmins from "./apps/super-admin/pages/ManageAdmins";
 import SystemSettings from "./apps/super-admin/pages/SystemSettings";
-import Persist from "./components/Persist";
+import Persist from "./utils/Persist";
 
 import { ProtectedRoute } from "./utils/protectedRoute";
 import SuperAdminLayout from "./components/layouts/SuperAdminLayout";
@@ -49,22 +48,23 @@ export const routes = [
   {
     path: "/",
     element: (
-      <AuthGuard>
+      // <AuthGuard>
         <AuthLayout />
-      </AuthGuard>
+      // </AuthGuard>
     ),
     children: [
       { path: "/", element: <Navigate to="/login" /> },
       { path: "/login", element: <Login /> },
-      { path: "/forgot-password", element: <ForgotPassword /> },
     ],
   },
   {
     path: "/super_admin",
     element: (
-      <ProtectedRoute allowedRoutes={["super_admin"]}>
-        <SuperAdminLayout />
-      </ProtectedRoute>
+      // <Persist>
+        // <ProtectedRoute allowedRoutes={["super_admin"]}>
+          <SuperAdminLayout />
+        // </ProtectedRoute>
+      // </Persist>
     ),
     children: [
       {

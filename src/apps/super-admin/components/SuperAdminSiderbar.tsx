@@ -9,7 +9,7 @@ import {
   SidebarFooter
 } from "@/components/ui/sidebar";
 import Logout from "@/components/Logout";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Menu items.
 const items = [
@@ -43,28 +43,26 @@ const items = [
     url: "/super_admin/student",
     icon: Settings,
   },
-  {
-    title: "Settings",
-    url: "/super_admin/system-settings",
-    icon: Settings,
-  },
+
 ];
 
 export function SuperAdminSidebar() {
+  const location = useLocation();
   return (
     <Sidebar>
-      <SidebarContent>
-        <SidebarMenu className="gap-5 p-4">
-          {items.map((item) => (
-            <SidebarMenuItem className="font-bold"  key={item.title}>
-              <SidebarMenuButton asChild>
+      <SidebarContent className="bg-[#1E1E2E] text-white">
+        <SidebarMenu className="gap-5 p-4 ">
+          {items.map((item) => {
+const isActive = location.pathname === item.url;
+            return <SidebarMenuItem className={`font-bold ${isActive ? 'text-blue-500' : 'text-white'}`}  key={item.title}>
+              <SidebarMenuButton className={`${isActive ? 'bg-gray-700' : ''}`}  asChild>
                 <Link to={item.url}>
                   <item.icon />
                   <span className="text-xl">{item.title}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          ))}
+          })}
         </SidebarMenu>
         <SidebarFooter>
             <Logout/>

@@ -2,6 +2,7 @@ import useAxiosAuth from "../hooks/useAuth";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Button } from "./ui/button";
 
 const Logout = () => {
   const axiosInstance = useAxiosAuth();
@@ -32,7 +33,7 @@ const Logout = () => {
     }
   }
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return <Button onClick={handleLogout}>Logout</Button>;
 };
 
 export default Logout;
