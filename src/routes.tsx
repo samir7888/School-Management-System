@@ -16,7 +16,7 @@ import ManageUsers from "./apps/admin/pages/ManageUsers";
 import Settings from "./apps/admin/pages/Settings";
 
 // Student apps/pages
-import Courses from "./apps/student/pages/Courses";
+import Courses from "./apps/student/pages/Students";
 import Grades from "./apps/student/pages/Grades";
 import Profile from "./apps/student/pages/Profile";
 
@@ -48,9 +48,9 @@ export const routes = [
   {
     path: "/",
     element: (
-      // <AuthGuard>
+       <AuthGuard>
         <AuthLayout />
-      // </AuthGuard>
+       </AuthGuard>
     ),
     children: [
       { path: "/", element: <Navigate to="/login" /> },
@@ -60,11 +60,11 @@ export const routes = [
   {
     path: "/super_admin",
     element: (
-      // <Persist>
-        // <ProtectedRoute allowedRoutes={["super_admin"]}>
+      <Persist>
+         <ProtectedRoute allowedRoutes={["super_admin"]}>
           <SuperAdminLayout />
-        // </ProtectedRoute>
-      // </Persist>
+         </ProtectedRoute>
+       </Persist>
     ),
     children: [
       {

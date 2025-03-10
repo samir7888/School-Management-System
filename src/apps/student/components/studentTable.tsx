@@ -9,9 +9,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-interface User {
-  id: number;
-  firstName: string;
+interface data {
+  id:string;
+  studentId: string;
+  rollNo:number;
+  fullName: string;
   gender: string;
   email: string;
   phone: string;
@@ -20,46 +22,48 @@ interface User {
 
 interface StudentTableProps {
   user: {
-    users: User[];
+    data: data[];
   };
 }
 
 export const StudentTable: React.FC<StudentTableProps> = ({ user }) => {
+  console.log(user.data)
   return (
     <>
       <Table>
-        <TableCaption>A list Users.</TableCaption>
-        <TableHeader className="">
-          <TableRow className="">
+        <TableCaption>A list Students.</TableCaption>
+        <TableHeader>
+          <TableRow>
             <TableHead className="w-[100px]">Id</TableHead>
-            <TableHead>FirstName</TableHead>
+            <TableHead>Roll no.</TableHead>
+            <TableHead>Name</TableHead>
             <TableHead>Gender</TableHead>
-            <TableHead>email</TableHead>
-            <TableHead className="">phone number</TableHead>
-            <TableHead className="">age</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead >Phone Number</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {user.users.map((user: User, id: number) => (
-            <TableRow>
-              <TableCell key={id} className="font-medium">
-                {user.id}
+          {user.data.map((user: data) => (
+            <TableRow key={user.id}>
+              <TableCell  className="font-medium">
+                {user.studentId}
               </TableCell>
-              <TableCell key={id} className="font-medium">
-                {user.firstName}
+              <TableCell  className="font-medium">
+                {user.rollNo}
               </TableCell>
-              <TableCell key={id} className="font-medium">
+              <TableCell  className="font-medium">
+                {user?.fullName}
+              </TableCell>
+              <TableCell  className="font-medium">
                 {user.gender}
               </TableCell>
-              <TableCell key={id} className="font-medium">
+              <TableCell  className="font-medium">
                 {user.email}
               </TableCell>
-              <TableCell key={id} className="font-medium">
+              <TableCell  className="font-medium">
                 {user.phone}
               </TableCell>
-              <TableCell key={id} className="font-medium">
-                {user.age}
-              </TableCell>
+             
             </TableRow>
           ))}
         </TableBody>

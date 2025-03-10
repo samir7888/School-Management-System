@@ -11,3 +11,12 @@ export enum UserRole {
   Student = "student",
   Teacher = "teacher",
 }
+
+export interface IMeta {
+  page: number;
+  take: number;
+  itemCount: number;
+  pageCount: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}

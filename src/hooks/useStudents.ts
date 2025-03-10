@@ -1,10 +1,23 @@
-import { filterStudents } from "@/api/students/student-api";
-import { useQuery } from "@tanstack/react-query";
+import { BASEURL } from "@/utils/constant";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import useAxiosAuth from "@/hooks/useAuth";
 
-export const useStudents = ({ searchBy, searchValue }: { searchBy: string; searchValue: string }) => {
+export const useFetchStudents = ({ query }: { query: string }) => {
+  const axiosInstance = useAxiosAuth();
+  console.log(query);
   return useQuery({
-    queryKey: ["students", searchBy, searchValue],
-    queryFn: () => filterStudents({ key: searchBy, value: searchValue }),
-    enabled: searchValue.length > 1, // Avoid unnecessary requests
+    queryKey: ["students", query],
+    queryFn: async () => {
+      try {
+        const res = await axiosInstance.get(
+          `${BASEURL}/students${query ? `?${query}` : ""}`
+        );
+        return res.data;
+      } catch (error) {
+        console.error("Error fetching students:", error);
+        throw new Error("Failed to fetch students");
+      }
+    },
+    placeholderData: keepPreviousData,
   });
 };
