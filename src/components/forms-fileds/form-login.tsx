@@ -3,9 +3,9 @@ import { BASEURL } from "@/utils/constant";
 import axios, { AxiosError } from "axios";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { Eye, EyeOff } from "lucide-react";
-import { loginSchema } from "@/validations/authSchema"; // Import Zod schema
+import { loginSchema } from "@/schemas/authSchema"; // Import Zod schema
 
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("prakashbanjade191@gmail.com");

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import SearchInput from "@/components/forms-fileds/SearchInput";
 
-export const FilterStudents = () => {
+export const FilterTeachers = () => {
   return (
     <div className="flex gap-3">
       <Select>

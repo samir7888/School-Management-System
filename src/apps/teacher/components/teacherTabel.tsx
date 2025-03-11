@@ -8,18 +8,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { IStudent } from "@/types/student-types";
+import { ITeacher } from "@/types/teacher-types";
 
 
 
 interface StudentTableProps {
   user: {
-    data: IStudent[];
+    data: ITeacher[];
   };
 }
 
-export const StudentTable: React.FC<StudentTableProps> = ({ user }) => {
-  console.log(user.data)
+export const TeacherTable: React.FC<StudentTableProps> = ({ user }) => {
+  
   return (
     <>
       <Table>
@@ -27,24 +27,24 @@ export const StudentTable: React.FC<StudentTableProps> = ({ user }) => {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Id</TableHead>
-            <TableHead>Roll no.</TableHead>
-            <TableHead>Name</TableHead>
+            <TableHead>First Name</TableHead>
+            <TableHead>Last Name</TableHead>
             <TableHead>Gender</TableHead>
             <TableHead>Email</TableHead>
             <TableHead >Phone Number</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {user.data.map((user: IStudent) => (
+          {user.data.map((user: ITeacher) => (
             <TableRow key={user.id}>
               <TableCell  className="font-medium">
-                {user.studentId}
+                {user.teacherId}
               </TableCell>
               <TableCell  className="font-medium">
-                {user.rollNo}
+                {user.firstName}
               </TableCell>
               <TableCell  className="font-medium">
-                {user?.fullName}
+                {user?.lastName}
               </TableCell>
               <TableCell  className="font-medium">
                 {user.gender}

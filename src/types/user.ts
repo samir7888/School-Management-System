@@ -20,3 +20,13 @@ export interface IMeta {
   hasPreviousPage: boolean;
   hasNextPage: boolean;
 }
+
+export type TSelectOption = {
+  label: string;
+  value: string;
+};
+
+export type IFacultyOption = {
+  id: string;
+  name: string;
+};

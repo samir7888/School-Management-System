@@ -2,20 +2,19 @@ import { BASEURL } from "@/utils/constant";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import useAxiosAuth from "@/hooks/useAuth";
 
-export const useFetchStudents = ({ query }: { query: string }) => {
+export const useFetchTeachers = ({ query }: { query: string }) => {
   const axiosInstance = useAxiosAuth();
-  console.log(query);
   return useQuery({
-    queryKey: ["students", query],
+    queryKey: ["teachers", query],
     queryFn: async () => {
       try {
         const res = await axiosInstance.get(
-          `${BASEURL}/students${query ? `?${query}` : ""}`
+          `${BASEURL}/teachers${query ? `?${query}` : ""}`
         );
         return res.data;
       } catch (error) {
-        console.error("Error fetching students:", error);
-        throw new Error("Failed to fetch students");
+        console.error("Error fetching teachers:", error);
+        throw new Error("Failed to fetch teachers");
       }
     },
     placeholderData: keepPreviousData,

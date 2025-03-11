@@ -34,8 +34,8 @@ const items = [
     icon: Search,
   },
   {
-    title: "Settings",
-    url: "/super_admin/system-settings",
+    title: "Teachers",
+    url: "/super_admin/teacher",
     icon: Settings,
   },
   {
@@ -43,6 +43,7 @@ const items = [
     url: "/super_admin/student",
     icon: Settings,
   },
+ 
 
 ];
 

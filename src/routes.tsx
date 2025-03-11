@@ -16,13 +16,13 @@ import ManageUsers from "./apps/admin/pages/ManageUsers";
 import Settings from "./apps/admin/pages/Settings";
 
 // Student apps/pages
-import Courses from "./apps/student/pages/Students";
+import Students from "./apps/student/pages/Students";
 import Grades from "./apps/student/pages/Grades";
 import Profile from "./apps/student/pages/Profile";
 
 // Teacher apps/pages
 import Assignments from "./apps/teacher/pages/Assignments";
-import Students from "./apps/teacher/pages/Students";
+// import Students from "./apps/teacher/pages/Students";
 import Classes from "./apps/teacher/pages/Class";
 
 // Super Admin apps/pages
@@ -33,6 +33,11 @@ import Persist from "./utils/Persist";
 
 import { ProtectedRoute } from "./utils/protectedRoute";
 import SuperAdminLayout from "./components/layouts/SuperAdminLayout";
+import CreateStudent from "./apps/super-admin/pages/CreateStudent";
+// import CreateTeacher from "./apps/super-admin/pages/CreateTeacher";
+import Teachers from "./apps/teacher/pages/Teacher";
+// import CreateTeacher from "./apps/super-admin/pages/CreateTeacher";
+import { TeacherForm } from "./components/forms-fileds/TeacherForm";
 
 const AuthGuard: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { currentUser } = useAuth();
@@ -48,9 +53,9 @@ export const routes = [
   {
     path: "/",
     element: (
-       <AuthGuard>
+      <AuthGuard>
         <AuthLayout />
-       </AuthGuard>
+      </AuthGuard>
     ),
     children: [
       { path: "/", element: <Navigate to="/login" /> },
@@ -61,10 +66,10 @@ export const routes = [
     path: "/super_admin",
     element: (
       <Persist>
-         <ProtectedRoute allowedRoutes={["super_admin"]}>
+        <ProtectedRoute allowedRoutes={["super_admin","admin"]}>
           <SuperAdminLayout />
-         </ProtectedRoute>
-       </Persist>
+        </ProtectedRoute>
+      </Persist>
     ),
     children: [
       {
@@ -74,7 +79,11 @@ export const routes = [
       { path: "/super_admin/dashboard", element: <Overview /> },
       { path: "/super_admin/manage-admins", element: <ManageAdmins /> },
       { path: "/super_admin/system-settings", element: <SystemSettings /> },
-      { path: "/super_admin/student", element: <Courses /> },
+      { path: "/super_admin/student", element: <Students /> },
+      { path: "/super_admin/create-student", element: <CreateStudent /> },
+      { path: "/super_admin/teacher", element: <Teachers /> },
+      { path: "/super_admin/create-teacher", element: <TeacherForm /> },
+      
     ],
   },
   {
@@ -88,14 +97,15 @@ export const routes = [
       { path: "/admin", element: <Navigate to="/admin/dashboard" /> },
       { path: "/admin/dashboard", element: <AdminHome /> },
       { path: "/admin/manage-users", element: <ManageUsers /> },
-      { path: "/admin/settings", element: <Settings /> },
+      { path: "/admin/settings", element: <TeacherForm /> },
+      { path: "/admin/create-teacher", element: <TeacherForm /> },
     ],
   },
   {
     path: "/teacher",
     element: (
       <Persist>
-        <ProtectedRoute allowedRoutes={["teacher"]}>
+        <ProtectedRoute allowedRoutes={["teacher","super_admin"]}>
           <TeacherLayout />
         </ProtectedRoute>
       </Persist>
@@ -103,7 +113,7 @@ export const routes = [
     children: [
       { path: "/teacher", element: <Navigate to="/teacher/dashboard" /> },
       { path: "/teacher/dashboard", element: <Assignments /> },
-      { path: "/teacher/students", element: <Students /> },
+      // { path: "/teacher/students", element: <Students /> },
       { path: "/teacher/classes", element: <Classes /> },
     ],
   },
@@ -118,7 +128,7 @@ export const routes = [
     ),
     children: [
       { path: "/student", element: <Navigate to="/student/dashboard" /> },
-      { path: "/student/dashboard", element: <Courses /> },
+      // { path: "/student/dashboard", element: <Courses /> },
       { path: "/student/grades", element: <Grades /> },
       { path: "/student/profile", element: <Profile /> },
     ],

@@ -9,6 +9,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Logout from "@/components/Logout";
+import { Link } from "react-router-dom";
 
 // Menu items.
 const items = [
@@ -33,8 +34,8 @@ const items = [
     icon: Search,
   },
   {
-    title: "Settings",
-    url: "#",
+    title: "teacher",
+    url: "/admin/create-teacher",
     icon: Settings,
   },
 ];
@@ -47,10 +48,10 @@ export function AdminSidebar() {
           {items.map((item) => (
             <SidebarMenuItem className="font-bold"  key={item.title}>
               <SidebarMenuButton asChild>
-                <a href={item.url}>
+                <Link to={item.url}>
                   <item.icon />
                   <span className="text-xl">{item.title}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
